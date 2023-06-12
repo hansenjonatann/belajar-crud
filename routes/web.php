@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\pegawaiController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,22 @@ Route::get('/', [pegawaiController::class , 'index']);
 Route::get('/daftar' , function() {
     return view('daftar');
 });
-Route::post('/register', [pegawaiController::class , 'regist']);
+
+// index
+Route::post('/daftar', [pegawaiController::class , 'regist']);
 Route::get('/editData/{id}', [pegawaiController::class , 'editData']);
 Route::post('/updateData/{id}', [pegawaiController::class , 'updateData']);
 Route::get('/delete/{id}', [pegawaiController::class , 'delete']);
+
+// Login user
+Route::get('/login',[LoginController::class , 'index']);
+Route::post('/login',[LoginController::class , 'auth']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
+// Register a new user
+Route::get('/register',[RegisterController::class , 'index']);
+Route::post('/register',[RegisterController::class , 'store']);
+
 
 
 Route::get('/about', function() {

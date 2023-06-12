@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="/register" method="post">
+    <form action="/daftar" method="post">
         @csrf
         @if (session('success'))
             <h1>{{ session('success') }}</h1>
